@@ -10,8 +10,6 @@
     <style>
       body {
         background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
-        /* Hiệu ứng ánh sáng */
-        position: relative;
         min-height: 100vh;
         margin: 0;
         display: flex;
@@ -20,51 +18,68 @@
         font-family: "Roboto", serif;
         overflow: hidden;
       }
-      /* Hiệu ứng ánh sáng động */
-      body::before {
-        content: "";
-        position: absolute;
-        top: -20%;
-        left: -20%;
-        width: 140%;
-        height: 140%;
-        background: radial-gradient(
-          circle at 60% 40%,
-          #fffbe6 0%,
-          #fbc2eb00 70%
-        );
-        opacity: 0.5;
-        pointer-events: none;
-        animation: shine 8s linear infinite alternate;
-        z-index: 0;
-      }
-      @keyframes shine {
-        0% {
-          transform: scale(1) rotate(0deg);
-        }
-        100% {
-          transform: scale(1.1) rotate(10deg);
-        }
-      }
       .container {
-        position: relative;
-        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        align-items: stretch;
+        height: 60vh;
+        width: 480px;
+        min-width: 320px;
+        max-width: 90vw;
         background: rgba(255, 255, 255, 0.85);
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18), 0 0 40px 0 #e0c3fc55;
         border-radius: 24px;
-        padding: 48px 64px;
-        text-align: center;
         border: 1px solid #f3f3f3;
+        overflow: hidden;
         animation: fadeIn 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
       }
-      h1 {
+      .header {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+        position: relative;
+        animation: shineGreen 3s infinite alternate;
+      }
+      .header h1 {
         font-family: "Playfair Display", serif;
-        font-size: 2.8rem;
-        color: #2d2d2d;
-        margin-bottom: 0.5em;
+        font-size: 2.4rem;
+        color: #fff;
+        margin: 0;
         letter-spacing: 2px;
-        text-shadow: 0 2px 8px #e0e0e0;
+        text-shadow: 0 2px 12px #b2f7ef, 0 0 8px #43e97b88;
         animation: slideDown 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+      }
+      .line {
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, #b993d6 0%, #8ca6db 100%);
+        margin: 0.5em auto 0 auto;
+        border-radius: 2px;
+        animation: fadeIn 1.5s 0.5s both;
+      }
+      .desc-section {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* Đổi sang màu cam nhạt */
+        background: linear-gradient(120deg, #ffe0b2 0%, #ffd8b0 100%);
+        position: relative;
+        animation: shinePink 4s infinite alternate;
+      }
+      .desc {
+        font-size: 1.2rem;
+        color: #a14b7a;
+        margin: 0 2em;
+        font-family: "Roboto", sans-serif;
+        text-shadow: 0 2px 8px #fff0f7;
+        animation: fadeIn 1.5s 0.8s both;
+        text-align: center;
       }
       @keyframes fadeIn {
         0% {
@@ -86,30 +101,35 @@
           transform: translateY(0);
         }
       }
-      .line {
-        width: 60px;
-        height: 4px;
-        background: linear-gradient(90deg, #b993d6 0%, #8ca6db 100%);
-        margin: 0 auto 1.5em auto;
-        border-radius: 2px;
-        animation: fadeIn 1.5s 0.5s both;
+      @keyframes shineGreen {
+        0% {
+          filter: brightness(1);
+        }
+        100% {
+          filter: brightness(1.15) drop-shadow(0 0 16px #43e97b88);
+        }
       }
-      .desc {
-        font-size: 1.2rem;
-        color: #555;
-        margin-top: 1em;
-        font-family: "Roboto", sans-serif;
-        animation: fadeIn 1.5s 0.8s both;
+      @keyframes shinePink {
+        0% {
+          filter: brightness(1);
+        }
+        100% {
+          filter: brightness(1.12) drop-shadow(0 0 16px #fbc2eb88);
+        }
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Hello from Frontend!</h1>
-      <div class="line"></div>
-      <div class="desc">
-        Chào mừng bạn đến với giao diện quý tộc, sang trọng và sống động của
-        chúng tôi. Hãy tận hưởng trải nghiệm tuyệt vời nhất!
+      <div class="header">
+        <h1>Hello from Frontend!</h1>
+        <div class="line"></div>
+      </div>
+      <div class="desc-section">
+        <div class="desc">
+          Chào mừng bạn đến với giao diện quý tộc, sang trọng và sống động của
+          chúng tôi. Hãy tận hưởng trải nghiệm tuyệt vời nhất!
+        </div>
       </div>
     </div>
   </body>
